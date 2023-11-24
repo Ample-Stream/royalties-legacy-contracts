@@ -1,0 +1,15 @@
+{
+  "name": "royalties-legacy-contract",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ample Stream",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@vercel/node": "^3.0.11",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "@irys/sdk": "^0.0.4"
+  }
+}
