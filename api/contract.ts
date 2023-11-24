@@ -15,7 +15,10 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
 		res.status(201).json({
 			success: true,
-			data: uploadResponse
+			data: {
+				...uploadResponse,
+				url: `https://gateway.irys.xyz/${uploadResponse.id}`
+			}
 		})
 
 	} catch (error) {
