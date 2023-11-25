@@ -8,7 +8,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 	try {
 
 		// create the document 
-		const doc: Buffer = createContract(req.body)
+		const doc: Buffer = await createContract(req.body)
 
 		// upload to arweave
 		const uploadResponse = await uploadToArweave(doc)
