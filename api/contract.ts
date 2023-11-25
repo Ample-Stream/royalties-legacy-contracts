@@ -12,11 +12,12 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
 		// upload to arweave
 		const uploadResponse = await uploadToArweave(doc)
+		console.log({ uploadResponse })
 
 		res.status(201).json({
 			success: true,
 			data: {
-				...uploadResponse,
+				...uploadResponse.data,
 				url: `https://gateway.irys.xyz/${uploadResponse.data.id}`
 			}
 		})
