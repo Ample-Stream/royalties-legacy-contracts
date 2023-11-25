@@ -8,7 +8,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 	try {
 
 		// create the document 
-		const doc = createContract(req.body)
+		const doc: Buffer = createContract(req.body)
 
 		// upload to arweave
 		const uploadResponse = await uploadToArweave(doc)
@@ -17,7 +17,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 			success: true,
 			data: {
 				...uploadResponse,
-				url: `https://gateway.irys.xyz/${uploadResponse.id}`
+				url: `https://gateway.irys.xyz/${uploadResponse.data.id}`
 			}
 		})
 

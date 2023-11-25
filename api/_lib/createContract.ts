@@ -6,9 +6,9 @@ interface IBody {
 	contractId: string
 }
 
-export const createContract = ({ org, name, contractId }: IBody) => {
-	const docName = './document.pdf'
+export const createContract = ({ org, name, contractId }: IBody): Buffer => {
 	console.log('Creating contract...')
+
 	const currentDate = new Date()
 	const formattedDate = currentDate.toDateString()
 
@@ -38,7 +38,6 @@ export const createContract = ({ org, name, contractId }: IBody) => {
 	const doc = new jsPDF()
 
 	doc.html(htmlDoc, { margin: 2 })
-	doc.save(docName)
 
-	return docName
+	return Buffer.from(doc.output())
 }

@@ -1,10 +1,9 @@
 import Irys from "@irys/sdk"
-import fs from 'fs'
 
-export const uploadToArweave = async (doc: string) => {
+export const uploadToArweave = async (doc: Buffer) => {
 	console.log('Uploading to arweave...')
 
-	const wallet = process.env.ARWEAVE_WALLET 
+	const wallet = process.env.ARWEAVE_WALLET
 	if (!wallet) throw 'Missing env variable ARWEAVE_WALLET'
 
 	const key = JSON.parse(wallet)
@@ -15,6 +14,14 @@ export const uploadToArweave = async (doc: string) => {
 		token: 'arweave',
 		key
 	})
+	const uploader = irys.uploader.chunkedUploader
 
-	return await irys.uploadFile(doc)
+	return await uploader.uploadData(doc, {
+		tags: [
+			{
+				name: "Content-Type",
+				value: "application/pdf"
+			}
+		]
+	});
 }
