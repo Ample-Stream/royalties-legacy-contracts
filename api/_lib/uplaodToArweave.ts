@@ -16,5 +16,5 @@ export const uploadToArweave = async (doc: string) => {
 		key
 	})
 
-	return await irys.upload(doc)
+	return await irys.uploadFile(doc)
 }

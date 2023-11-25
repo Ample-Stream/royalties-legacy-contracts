@@ -7,11 +7,11 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
 	try {
 
-		// create the document
-		const ownershipDocument = createContract(req.body)
+		// create the document 
+		const doc = createContract(req.body)
 
 		// upload to arweave
-		const uploadResponse = await uploadToArweave(ownershipDocument)
+		const uploadResponse = await uploadToArweave(doc)
 
 		res.status(201).json({
 			success: true,
@@ -22,10 +22,12 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 		})
 
 	} catch (error) {
+
 		console.error(error)
 		return res.status(500).json({
 			success: false,
 			message: JSON.stringify(error)
 		})
+
 	}
 }
