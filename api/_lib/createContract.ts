@@ -34,7 +34,10 @@ export const createContract = ({ org, name, contractId }: IBody): Buffer => {
 	`
 
 	const doc = new jsPDF()
-	doc.text(stringDoc, 5, 5)
+	doc.setFontSize(11)
+	doc.text(stringDoc, 5, 5, {
+		maxWidth: 160
+	})
 
 	return Buffer.from(doc.output())
 }
