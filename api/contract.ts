@@ -26,7 +26,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 		console.error(error)
 		return res.status(500).json({
 			success: false,
-			message: JSON.stringify(error)
+			message: error
 		})
 
 	}
